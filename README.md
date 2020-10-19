@@ -78,4 +78,4 @@ zurückliefern, d.h.
   ein gleichschenkliges Dreieck natürlich auch ein
   normales Dreieck ist.
 
-Verwenden Sie aich hier die TDD-Vorgehensweise.
+Verwenden Sie auch hier die TDD-Vorgehensweise.

@@ -69,11 +69,11 @@ so dass alle Tests durchlaufen.
 
 Schließlich sollen noch gleichschenklige Dreiecke
 erkannt werden. Dabei soll die
-Methode stets die genauerste Information 
+Methode stets die genaueste Information 
 zurückliefern, d.h.
 - bei einem gleichseitigen Dreieck *EQUILATERAL*, auch wenn 
   ein gleichseitiges Dreieck natürlich auch gleichschenklig
-  ist
+  ist.
 - bei einem gleichschenkligem Dreieck *ISOSCELES*, auch wenn
   ein gleichschenkliges Dreieck natürlich auch ein
   normales Dreieck ist.

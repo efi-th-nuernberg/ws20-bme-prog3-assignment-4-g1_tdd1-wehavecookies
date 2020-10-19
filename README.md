@@ -67,7 +67,7 @@ so dass alle Tests durchlaufen.
 
 #### Gleichschenkliges Dreieck
 
-Schließlich sollen noch gleichseitige Dreiecke
+Schließlich sollen noch gleichschenklige Dreiecke
 erkannt werden. Dabei soll die
 Methode stets die genauerste Information 
 zurückliefern, d.h.

@@ -13,130 +13,69 @@ erfolgreich ausführen zu können.
 
 #### Struktur des Assignments
 
+Das Assignment besteht aus zwei Java-Klassen:
+
+- <code>TriangleChecker</code> enthält den Produktivcode
+- <code>TriangleCheckerTest</code> enthält die Tests
+
+Mit Hilfe von TDD soll insbesondere die Methode
+
+<code>
+checkTriangle(float a, float b, float c)
+</code>
+
+entwickelt werden. Diese Methode hat die Aufgabe, anhand
+der übergebenen drei Seitenlängen zu entscheiden, ob es
+sich um ein normales, ein gleichschenkliges, ein
+gleichseitiges oder gar kein Dreieck handelt.
 
 
 ### Aufgabenstellung
 
-#### 
+#### Normales Dreieck
 
-Auch wenn es hier um JUnit und den Test-Runner geht,
-kann man dennoch den normalen Programmablauf starten -
-nur eben nicht mehr über den Run-Button. Versuchen Sie,
-das Programm über einen Kommandozeilenbefehl im
-Consolefenster von *repl.it* zu starten.
+Mit dem Assignment kommt ein erster Testfall,
+der überprüft, ob ein normales Dreieck richtig erkannt
+wird. Sorgen Sie dafür, dass der Testfall nicht mehr scheitert.
+Achten Sie darauf, dass Sie nicht mehr implementieren, als
+zur Lösung dieses Testfalls notwendig ist. Weitere
+Fälle müssen noch nicht erkannt werden.
 
-#### Erstellen einer Testklasse
+#### Gleichseitiges Dreieck
 
-Damit der Test-Runner zukünftig auch Tests findet,
-muss mindestens eine Testklasse erstellt werden,
-in der dann Testmethoden eingefügt werden. Legen
-Sie dazu eine weitere Java-Datei mit dem
-Namen <code>MainTest</code> an und implementieren Sie
-darin die gleichnamige leere Klasse. Die Klasse
-muss <code>public</code> deklariert werden, damit
-der Test-Runner auch Zugriff darauf erhält.
+Erstellen Sie nun einen Testfall, der überprüft, 
+ob ein gleichseitiges Dreieck erkannt wird. 
+Da Sie bisher nur normale Dreiecke identifizieren,
+wird dieser Testfall zunächst scheitern.
 
-Sorgen Sie durch
-Anpassungen in der Datei *.replit* dafür, dass auch diese
-Klasse compiliert wird.
+Nehmen Sie nun minimale Änderungen am Produktivcode vor, 
+so dass beide Testfälle fehlerfrei ausgeführt werden.
 
-Erweiteren Sie Ihre Implementierung der Testklasse
-um zwei Import-Statements:
+#### Kein Dreieck
 
-<code>
-import org.junit.Test;
+Es gibt Zahlenkombinationen, die nicht zu einem 
+Dreieck passen (z.B. negative Zahlen oder 
+eine überlange Seite, so dass die anderen beiden
+Seiten das Dreieck nicht abschließen können).
 
-import static org.junit.Assert.*;
-</code>
+Erstellen Sie jeweils eigene Testfälle für diese
+Art von Zahlenkombinationen. Das sind mindestens 
+6 weitere Testfälle (warum?).
 
-Damit der Code weiterhin übersetzt werden kann, muss
-nun auch beim Aufruf des Java-Compilers *javac* der
-*Classpath* so gesetzt werden, dass die *JAR*-Dateien 
-berückischtigt werden. Erweitern Sie die Datei *.replit*
-entsprechend.
+Korrigieren Sie anschließend den Produktivcode,
+so dass alle Tests durchlaufen.
 
+#### Gleichschenkliges Dreieck
 
-#### Erstellen einer Testmethode
+Schließlich sollen noch gleichseitige Dreiecke
+erkannt werden. Dabei soll die
+Methode stets die genauerste Information 
+zurückliefern, d.h.
+- bei einem gleichseitigen Dreieck *EQUILATERAL*, auch wenn 
+  ein gleichseitiges Dreieck natürlich auch gleichschenklig
+  ist
+- bei einem gleichschenkligem Dreieck *ISOSCELES*, auch wenn
+  ein gleichschenkliges Dreieck natürlich auch ein
+  normales Dreieck ist.
 
-Erst durch Testmethoden wird Ihre Klasse zu einer
-Testklasse. Typischerweise enthält eine Testklasse
-mehrere Testmethoden, die jeweils einen Aspekt 
-einer Anforderung überprüfen. Testmethoden sind stets
-<code>public</code>, besitzen keinen Rückgabewert
-und auch keine Übergabeparameter. Sie werden 
-mit der Annotation <code>@Test</code> als Testmethode
-gekennzeichnet.
-
-Ergänzen Sie in Ihrer Testklasse 
-eine erste Testmethode:
-
-<code>
-@Test
-
-public void testNothing() {}
-</code>
-
-Wenn Sie nun den Run-Button betätigen, sollte 
-Ihre Testklasse kompiliert und der Test-Runner 
-gestartet werden - allerdings werden noch immer
-keine Tests ansgeführt.
-
-Um dem Task-Runner mitzuteilen, in welchen
-Klassen er nach Testmethoden suchen soll, 
-sind diese Klassen beim Aufruf mitzugegeben.
-Daher murr die Datei  *.replit* erneut 
-angepasst werden:
-
-<code>
-language = "java"
-
-run = "javac Main.java && java -cp .:./jars/junit-4.12.jar:./jars/hamcrest-core-1.3.jar org.junit.runner.JUnitCore MainTest"
-</code>
-
-#### Erstellen einer weiteren Testmethode
-
-Es ist nicht sehr erstaunlich, dass der Test-Runner
-keine Fehler findet, da in der Testmethode nichts 
-getestet wird. Dies soll sich nun mit einer
-zweiten Testmethode ändern.
-
-Erstellen Sie eine weitere Testmethode
-mit dem Namen <code>testSomeStuff</code>
-(die genaue Signatur sollten Sie aus den
-bisherigen Ausführungen ableiten können.)
-
-Die eigentlichen Prüfungen werden in der 
-Testmethode in Form von Zusicherungen (*Assertions*)
-formuliert. Der Test ist fehlerfrei, wenn
-alle Zusicherungen der Testmethode eingehalten werden.
-
-*JUnit4* bringt eine Reihe von Funktionen mit, mit denen
-Zusicherungen formuliert werden können, z.B.:
-
-- <code>assertEquals</code>
-- <code>assertTrue</code>
-- <code>assertFalse</code>
-- <code>assertNull</code>
-- <code>assertNotNull</code>
-
-Eine Dokumentation der Zusicherungsmethoden der
-hier verwendeten *JUnit4*-Version finden Sie
-[hier](https://junit.org/junit4/javadoc/4.12/org/junit/Assert.html)
-
-Ergänzen Sie jetzt in Ihrer Testmethode Zusicherungen
-für folgende Aussagen:
-
-- Das Ergebnis der Addition von 2 und 3 ist 5.
-- Das Neuanlegen eines Strings liefert ein Objekt ungleich Null
-- 3 * 7 ist größer als 4 * 5
-
-Fügen Sie bei den Zusicherungen eine aussagekräftige 
-Meldung hinzu, die vom Test-Runner ausgegeben wird, falls 
-die Zusicherung nicht erfüllt wird.
-
-
-
-
-
-
-
+Verwenden Sie aich hier die TDD-Vorgehensweise.

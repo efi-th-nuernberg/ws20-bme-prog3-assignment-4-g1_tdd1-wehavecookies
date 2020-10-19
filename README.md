@@ -1,75 +1,23 @@
 # Software Engineering im Studiengang Media Engineering
 
-## Assignment "JUnit Einführung"  
+## Assignment "TDD Einführung"  
 
-### Grundlagen
+### Ausgangssituation
 
-#### JUnit
+#### Test Driven Development (TDD)
 
-Voraussetzung für Test Driven Development (TDD) sind maschinell ausführbare Tests. 
-Für *Java* ist hierfür die Bibliothek *JUnit* verbreitet, die wir in diesem und ggf. weiteren Assignments nutzen werden.
+Bei TDD gilt die Regel: Produktivcode darf erst geschrieben werden, wenn
+ein Test vorliegt, der scheitert. Und auch dann soll nur gerade so
+viel Code geschrieben werden, um den Testfall (und alle anderen Tests)
+erfolgreich ausführen zu können.
 
-Die Version *JUnit4* besteht aus zwei *JAR*-Dateien, in 
-denen bereits kompilierte Java-Klasse enthalten sind. 
-Sie finden diese Dateien im Unterverzeichnis *jars*.
-
-Unter Verwendung dieser Pakete kann später ein
-sog. Test-Runner gestartet werden, der die
-im Projekt enthaltenen Testmethoden ausführt. 
-Der normale Einstiegspunkt der *main*-Funktion wird
-in diesem Fall nicht verwendet.
+#### Struktur des Assignments
 
 
-#### .replit
-
-In der Umgebung [*repl.it*](https://repl.it/) wird 
-in der Datei *.replit* festgelegt, was nach dem
-Klick auf den Run-Button passieren soll. Normalerweise
-wird dies bei Java-Projekten das Übersetzen der
-Quellcode-Dateien mit dem Java-Compiler 
-(Kommandozeilenbefehl *javac*) und
-anschließend das Ausführen der Klasse mit der *main*-Funktion
-(Kommandozeilenbefehl *java*) sein. 
-Ein Beispiel für *.replit* ist:
-
-<code>
-language = "java"
-
-run = "javac Main.java && java Main"
-</code>
-
-Sollen  Tests mit *JUnit4* ausgeführt werden, ergeben sich zwei Änderungen:
-- Anstelle der Klasse mit der *main*-Funktion soll jetzt 
-  der Test-Runner gestartet werden, der in einer der *JAR*-Dateien enthalten ist
-- Die Klassen aus den *JAR*-Dateien müssen in den 
-  *Classpath* aufgenommen werden, damit sie beim Programmstart
-  geladen werden können
-
-Dies führt zu einer veränderten Datei *.replit*:
-
-<code>
-language = "java"
-
-run = "javac Main.java && java -cp .:./jars/junit-4.12.jar:./jars/hamcrest-core-1.3.jar org.junit.runner.JUnitCore"
-</code>
-
-Mit der Option <code>-cp</code> wird der *Classpath* gesetzt,
-der jetzt sowohl das aktuelle Verzeichnis 
-(repräsentiert duch den Punkt),
-als auch die beiden *JAR*-Dateien enthält. 
-Die *main*-Funktion wird in der Klasse
-<code>org.junit.runner.JUnitCore</code> gesucht,
-die in einer der *JAR*-Dateien enthalten ist und den 
-Test-Runner enthält.
-
-Sie können das Verhalten des Projekts nach dem 
-Klick auf den Run-Button ausprobieren. Es sollte der
-Test-Runner starten, der jedoch keine Tests vorfindet
-und dies auch entsprechend ausgibt.
 
 ### Aufgabenstellung
 
-#### Ausführen der "normalen" *main*-Funktion
+#### 
 
 Auch wenn es hier um JUnit und den Test-Runner geht,
 kann man dennoch den normalen Programmablauf starten -

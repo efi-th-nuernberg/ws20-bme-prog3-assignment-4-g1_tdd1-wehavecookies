@@ -47,8 +47,13 @@ public class TriangleChecker {
 
   // Analyse der Dreiecksart
   public static TriangleType checkTriangle(float a, float b, float c) {
-    return TriangleType.NONE;
+    if ((a + b < c || b + c < a || a + c < b) || (a <= 0 || b <= 0 || c <= 0))
+      return TriangleType.NONE;
+    else if(a==b && b==c)
+      return TriangleType.EQUILATERAL;
+    else if(a==b || b==c || a==c)
+      return TriangleType.ISOSCELES;
+    else 
+      return TriangleType.NORMAL;
   }
-
-
 }
